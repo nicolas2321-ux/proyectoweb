@@ -7,7 +7,7 @@ import Toogle from './edit/toogle';
 import Portal from '../../Components/portal';
 import { useState, useEffect } from 'react';
 import Modal from '../../services/modal';
-
+import { ToastContainer } from 'react-toastify';
 import update from '../../services/Update';
 
 
@@ -31,9 +31,6 @@ const Card = ({identify, post, image, date, description, likes=[], user, active 
     const onChange = (e, save) => {
         save(e.target.value);
         
-        console.log("descripcion ",descriptionForm);
-        console.log("imagen ", imageForm);
-        console.log("titulo ,", tittleForm)
     }
     
     
@@ -41,14 +38,9 @@ const Card = ({identify, post, image, date, description, likes=[], user, active 
         e.preventDefault();
         const Data =  update(identify, token, tittleForm, descriptionForm, imageForm );
         console.log(Data)
-        alert("Post Actualizado")
+        
         toogle(!modalActive);
-       
-        
-        
-        
 
-       
     }
     
   
@@ -69,7 +61,7 @@ const Card = ({identify, post, image, date, description, likes=[], user, active 
                 <FiEdit  onClick={toogle} className="cursor-pointer text-gray-400 text-opacity-50 hover:text-red-600 hover:text-opacity-1 transition-all transform hover:scale-125"/>
                 <Toogle identifier={identify}
                 active = {active}/>
-                
+                <><ToastContainer/></>
                 </div>
                 
                 <p className = "font-RobotoSlab lg:text-2xl">{post}</p>

@@ -38,27 +38,4 @@ services.verifyToken = async (token) => {
     return {};
 }
 
-services.create = async (title, description, image, token) => {
-    const response = await fetch(`${BASE_URL}/post/create`, {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            title: title,
-            description: description,
-            image: image
-        })
-    });
-
-    if (response.ok) {
-        const data = await response.json();
-        return data;
-    }
-
-    return {};
-}
-
-
-
 export default services;
